@@ -305,6 +305,7 @@ $commitCode""")
 
         vals = {}
         topobjectvar = 'topMo'
+        topobj_new = 'fvTenant'
         topdn = None
 
         if nocommit:
@@ -378,7 +379,8 @@ $commitCode""")
         vals['imports'] = '\n'.join(['import %s' % i for i in sorted(set(self.importlist))])
         vals['topMo'] = topobjectvar
         commitcodestr = 'c = cobra.mit.request.ConfigRequest()\n'
-        commitcodestr += 'c.addMo({0})\n'.format(topobjectvar)
+        #commitcodestr += 'c.addMo({0})\n'.format(topobjectvar)
+        commitcodestr += 'c.addMo({0})\n'.format(topobj_new)
         if not nocommit:
             commitcodestr += 'md.commit(c)\n'
         vals['commitCode'] = commitcodestr
